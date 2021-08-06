@@ -32,6 +32,19 @@ app.use(
   express.static(path.join(__dirname + "/node_modules/jquery/dist"))
 );
 
-app.get("/", (req, res) => {
-  res.render("Inicio");
+app.get("/:color", (req, res) => {
+  const { color } = req.params;
+  res.render("Inicio", {
+    colores: [
+      "primary",
+      "secondary",
+      "success",
+      "danger",
+      "warning",
+      "info",
+      "light",
+      "dark",
+    ],
+    color: color,
+  });
 });
